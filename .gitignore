@@ -1,0 +1,14 @@
+# Ignorar todo en data/
+data/*
+
+# Pero no ignorar estas carpetas específicas
+!data/equipos/
+!data/partidas/
+!data/capturas/
+!data/char_custom/
+
+# También asegurarse de no ignorar el contenido dentro de esas carpetas
+!data/equipos/**
+!data/partidas/**
+!data/capturas/**
+!data/char_custom/**

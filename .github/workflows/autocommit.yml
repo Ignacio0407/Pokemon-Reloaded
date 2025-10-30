@@ -1,0 +1,35 @@
+name: Auto Commit on Folder Change
+
+on:
+  push:
+    paths:
+      - 'data/equipos/**'
+      - 'data/partidas/**'
+      - 'data/capturas/**'
+      - 'data/char_custom/**'
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Detect changes
+        run: |
+          git add data/equipos data/partidas data/capturas data/char_custom
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+      - name: Commit and push changes
+        run: |
+          git commit -m "Auto-commit: changes in monitored folders"
+          git push
