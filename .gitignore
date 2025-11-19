@@ -1,5 +1,6 @@
 # Ignorar todo en data/
 data/*
+Proyecto-Reloaded-The-Last-Beta-1.8.5.exe
 
 # Pero no ignorar estas carpetas específicas
 !data/equipos/
